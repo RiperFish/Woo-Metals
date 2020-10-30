@@ -99,6 +99,13 @@ function woocommerce_support()
         'thumbnail_image_width' => 246,
         'single_image_width'    => 504,
     ));
+
+/*     if (!term_exists('TTT')) {
+        wp_insert_term('TTT', 'product_cat', array(
+            'description' => 'TTT', // optional
+            'slug' => 'TTT' // optional
+        ));
+    } */
 }
 add_action('after_setup_theme', 'woocommerce_support');
 /* 
@@ -106,21 +113,7 @@ if (class_exists('Woocommerce')){
     add_filter( 'woocommerce_enqueue_styles', '__return_empty_array' );
 }
  */
-function insert_category()
-{
-/*     if (!term_exists('Search')) {
-        wp_insert_term(
-            'Search',
-            'page',
-            array(
-                'description' => 'Search.',
-                'slug'        => 'search'
-            )
-        );
-    } */
-    
-}
-add_action('after_setup_theme', 'insert_category');
+
 
 /**
  * Change the breadcrumb separator

@@ -23,11 +23,11 @@ get_header();
 
                                     <div class="content__right">
                                         <div class="hero__badje red_badje">
-                                            <img class="shipping_icon" src="img/free-shipping.svg" alt="" srcset="">
+                                            <img class="shipping_icon" src="<?php bloginfo('template_directory') ?>/img/free-shipping.svg" alt="" srcset="">
                                             <p class="badje__text">Free shipping</p>
                                         </div>
                                         <div class="hero__badje black_badje">
-                                            <img class="premium_icon" src="img/premium-quality.svg" alt="" srcset="">
+                                            <img class="premium_icon" src="<?php bloginfo('template_directory') ?>/img/premium-quality.svg" alt="" srcset="">
                                             <p class="badje__text">Great quality</p>
 
                                         </div>

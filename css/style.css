@@ -575,8 +575,8 @@ a {
     background-color: #d21111;
     border-radius: 50%;
     display: flex;
-    /* align-items: center;
-    justify-content: center; */
+     /*align-items: center; */
+    justify-content: center;
     font-weight: bold;
     font-size: 16px;
     line-height: 19px;
@@ -1346,6 +1346,7 @@ a {
     display: flex;
     margin-bottom: 30px;
     position: relative;
+    justify-content: space-between;
 }
 
 .product__content .price_holder {
@@ -1368,7 +1369,7 @@ a {
     line-height: 36px;
     color: #d21111;
     margin-right: 26px;
-    top: 4px;
+    top: 18px;
     position: relative;
 }
 
@@ -1381,8 +1382,8 @@ a {
 .product__content .cart_quantity {
     display: flex;
     flex-direction: column;
-    margin-right: 22px;
     gap: 6px;
+    flex: 1;
 }
 
 .product__content .cart_quantity .qte_lbl {
