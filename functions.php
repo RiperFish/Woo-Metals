@@ -3,7 +3,7 @@
 function style_load()
 {
     wp_enqueue_style('style_css', get_template_directory_uri() . "/css/style.css", array(), "1.0", "all");
-    //wp_enqueue_style('slick_css', get_template_directory_uri() . "/css/slick.css", array(), "1.0", "all");
+    wp_enqueue_style('slick_css', get_template_directory_uri() . "/css/slick.css", array(), "1.0", "all");
 }
 
 add_action("wp_enqueue_scripts", "style_load");
@@ -23,7 +23,8 @@ function load_script()
 {
     wp_enqueue_script('main', get_template_directory_uri() . '/js/main.js', array('jquery'), '1.0', true);
     wp_enqueue_script('slick', get_template_directory_uri() . '/js/slick.js', array('jquery'), '1.0', true);
-    wp_enqueue_script('main', get_template_directory_uri() . '/js/item.js', array('jquery'), '1.0', true);
+    //wp_enqueue_script('main', get_template_directory_uri() . '/js/item.js', array('jquery'), '1.0', true);
+    wp_enqueue_script('carousel', get_template_directory_uri() . '/js/carousels.js', array('jquery'), '1.0', true);
 }
 
 add_action("wp_enqueue_scripts", "load_script");
@@ -90,7 +91,14 @@ add_theme_support('post-thumbnails');
 
 function woocommerce_support()
 {
-    add_theme_support('woocommerce');
+    add_theme_support('wc-product-gallery-zoom');
+    add_theme_support('wc-product-gallery-slider');
+    add_theme_support('wc-product-gallery-lightbox');
+    add_theme_support('woocommerce', array(
+
+        'thumbnail_image_width' => 246,
+        'single_image_width'    => 504,
+    ));
 }
 add_action('after_setup_theme', 'woocommerce_support');
 /* 
@@ -98,20 +106,21 @@ if (class_exists('Woocommerce')){
     add_filter( 'woocommerce_enqueue_styles', '__return_empty_array' );
 }
  */
-/* function insert_category()
+function insert_category()
 {
-    if (!term_exists('Hard form metals')) {
+/*     if (!term_exists('Search')) {
         wp_insert_term(
-            'Cart',
+            'Search',
             'page',
             array(
-                'description' => 'Cart.',
-                'slug'        => 'Cart'
+                'description' => 'Search.',
+                'slug'        => 'search'
             )
         );
-    }
+    } */
+    
 }
-add_action('after_setup_theme', 'insert_category'); */
+add_action('after_setup_theme', 'insert_category');
 
 /**
  * Change the breadcrumb separator
@@ -149,23 +158,51 @@ function remove_sale_flash()
 }
 
 // hide coupon field on cart page
-function hide_coupon_field_on_cart( $enabled ) {
+function hide_coupon_field_on_cart($enabled)
+{
 
-	if ( is_cart() ) {
-		$enabled = false;
-	}
+    if (is_cart()) {
+        $enabled = false;
+    }
 
-	return $enabled;
+    return $enabled;
 }
-add_filter( 'woocommerce_coupons_enabled', 'hide_coupon_field_on_cart' );
+add_filter('woocommerce_coupons_enabled', 'hide_coupon_field_on_cart');
 
 // hide coupon field on checkout page
-function hide_coupon_field_on_checkout( $enabled ) {
+function hide_coupon_field_on_checkout($enabled)
+{
 
-	if ( is_checkout() ) {
-		$enabled = false;
-	}
+    if (is_checkout()) {
+        $enabled = false;
+    }
 
-	return $enabled;
+    return $enabled;
 }
-add_filter( 'woocommerce_coupons_enabled', 'hide_coupon_field_on_checkout' );
+add_filter('woocommerce_coupons_enabled', 'hide_coupon_field_on_checkout');
+
+/*
+* Creating a function to create our CPT
+*/
+
+function material_init()
+{
+    $labels = array(
+        'name' => _x('Slick-Slider', 'slick-slider'),
+        'singular_name' => _x('Slick-Slide', 'slick-slide')
+
+    );
+    $args = array(
+        'labels' => $labels,
+        'show_ui' => true,
+        'menu_icon' => 'dashicons-paperclip',
+        'supports' => array('title', 'excerpt', 'thumbnail', 'custom-fields'),
+        'hierarchical' => false
+    );
+    register_post_type('Slider', $args);
+}
+add_action('init', 'material_init');
+
+
+remove_action('woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20);
+remove_action('woocommerce_before_single_product_summary', 'woocommerce_show_product_sale_flash', 10);
