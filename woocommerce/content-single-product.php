@@ -54,23 +54,27 @@ if (post_password_required()) {
                     </div>
                 </div>
                 <div class="content__right">
-                    <div class="alert">
-                        <p class="item__ship-txt">Worldwide FREE shipping</p>
-                        <img class="item__ship-icon" src="<?php bloginfo('template_directory') ?>/img/free-shipping-item.svg" alt="" srcset="">
-                    </div>
-                    <div class="add_cart">
-                        <div class="price_holder">
-                            <span class="cart__price"><?php woocommerce_template_single_price() ?></span>
-                        </div>
 
-                        <div class="cart_quantity">
-                            <label for="qte" class="qte_lbl">Quantity</label>
-                            <?php woocommerce_template_single_add_to_cart() ?>
+                    <div class="add_cart_wrapper">
+                        <div class="alert">
+                            <p class="item__ship-txt">Worldwide FREE shipping</p>
+                            <img class="item__ship-icon" src="<?php bloginfo('template_directory') ?>/img/free-shipping-item.svg" alt="" srcset="">
+                        </div>
+                        <div class="add_cart">
+                            <div class="price_holder">
+                                <span class="cart__price"><?php woocommerce_template_single_price() ?></span>
+                            </div>
+
+                            <div class="cart_quantity">
+                                <label for="qte" class="qte_lbl">Quantity</label>
+                                <?php woocommerce_template_single_add_to_cart() ?>
+                            </div>
                         </div>
                     </div>
+
 
                     <?php do_action('woocommerce_before_single_product_summary');
-                    
+
                     ?>
 
                 </div>

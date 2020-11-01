@@ -32,7 +32,6 @@ menu_toggle.addEventListener('click', () => {
     body.classList.toggle("noscroll");
 });
 
-
 // hamburger
 /* const hamburger = document.querySelector('.header__humbergermenu');
 const menu = document.querySelector('.menu');
