@@ -4,7 +4,7 @@
 get_header();
 
 ?>
-<main>
+<main class="footer-fix">
 
     <?php
     if (is_shop()) {
@@ -71,6 +71,7 @@ get_header();
             if (!is_shop()) {
                 if (apply_filters('woocommerce_show_page_title', true)) {  ?>
                     <h1 class="section_title"><?php woocommerce_page_title(); ?></h1>
+
 
 
                 <?php }

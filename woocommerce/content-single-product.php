@@ -42,7 +42,7 @@ if (post_password_required()) {
  */
 
 ?>
-<main>
+<main class="footer-fix">
     <section class="category__products">
         <div class="container">
             <?php do_action('woocommerce_before_main_content'); ?>
@@ -67,7 +67,11 @@ if (post_password_required()) {
 
                             <div class="cart_quantity">
                                 <label for="qte" class="qte_lbl">Quantity</label>
-                                <?php woocommerce_template_single_add_to_cart() ?>
+                                <?php woocommerce_template_single_add_to_cart()
+                                //woocommerce_simple_add_to_cart() ;
+                                //woocommerce_before_add_to_cart_form() 
+                                ?>
+                           
                             </div>
                         </div>
                     </div>

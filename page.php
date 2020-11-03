@@ -7,12 +7,12 @@ do_action('woocommerce_before_cart');
 
 
 
-<main>
+<main class="footer-fix">
     <section class="cart">
         <div class="container">
             
             <?php do_action('woocommerce_before_main_content'); ?>
-            <h1 class="cart_title" >Cart</h1>
+            <h1 class="cart_title" ><?php the_title(); ?></h1>
             <div class="cart__wrapper">
 
 
