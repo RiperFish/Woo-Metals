@@ -47,6 +47,7 @@
                                     <img class="search__btn-icon" src="img/search_icon.svg" alt="" srcset="">
                                 </a> -->
                                 <?php get_product_search_form();?>
+                                <a href="#" class="search__close"><span class="close__x">X</span></a>
                                
                             </div>
 

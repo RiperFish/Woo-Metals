@@ -11,9 +11,9 @@ search__icon.addEventListener('click', () => {
 mobile_search_icon.addEventListener('click', () => {
     header__top_search.classList.toggle("show_search-bar");
 });
-/* search__close.addEventListener('click', () => {
+search__close.addEventListener('click', () => {
     header__top_search.classList.remove("show_search-bar");
-}); */
+});
 
 
 /* $(document).click(function (event) {
